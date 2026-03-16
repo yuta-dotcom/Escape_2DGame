@@ -1,0 +1,197 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\yuta0\\OneDrive\\\u30C7\u30B9\u30AF\u30C8\u30C3\u30D7\\Unity\u5236\u4F5C\\Escape_2DGame\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{C36C15B3-BB9D-4200-165A-7348428B438B}|Assembly-CSharp.csproj|c:\\users\\yuta0\\onedrive\\\u30C7\u30B9\u30AF\u30C8\u30C3\u30D7\\unity\u5236\u4F5C\\escape_2dgame\\assets\\scripts\\player\\playerhealthcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C36C15B3-BB9D-4200-165A-7348428B438B}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\player\\playerhealthcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C36C15B3-BB9D-4200-165A-7348428B438B}|Assembly-CSharp.csproj|C:\\Users\\yuta0\\OneDrive\\\u30C7\u30B9\u30AF\u30C8\u30C3\u30D7\\Unity\u5236\u4F5C\\Escape_2DGame\\assets\\scripts\\common\\gamemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C36C15B3-BB9D-4200-165A-7348428B438B}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\common\\gamemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C36C15B3-BB9D-4200-165A-7348428B438B}|Assembly-CSharp.csproj|C:\\Users\\yuta0\\OneDrive\\\u30C7\u30B9\u30AF\u30C8\u30C3\u30D7\\Unity\u5236\u4F5C\\Escape_2DGame\\assets\\scripts\\ui\\titlemenucontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C36C15B3-BB9D-4200-165A-7348428B438B}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\ui\\titlemenucontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C36C15B3-BB9D-4200-165A-7348428B438B}|Assembly-CSharp.csproj|C:\\Users\\yuta0\\OneDrive\\\u30C7\u30B9\u30AF\u30C8\u30C3\u30D7\\Unity\u5236\u4F5C\\Escape_2DGame\\assets\\scripts\\common\\inputmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C36C15B3-BB9D-4200-165A-7348428B438B}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\common\\inputmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{11969DC3-ED43-E765-3C42-D7E1CD5FE756}|AstarPathfindingProject.csproj|C:\\Users\\yuta0\\OneDrive\\\u30C7\u30B9\u30AF\u30C8\u30C3\u30D7\\Unity\u5236\u4F5C\\Escape_2DGame\\assets\\astarpathfindingproject\\core\\astarpath.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{11969DC3-ED43-E765-3C42-D7E1CD5FE756}|AstarPathfindingProject.csproj|solutionrelative:assets\\astarpathfindingproject\\core\\astarpath.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C36C15B3-BB9D-4200-165A-7348428B438B}|Assembly-CSharp.csproj|C:\\Users\\yuta0\\OneDrive\\\u30C7\u30B9\u30AF\u30C8\u30C3\u30D7\\Unity\u5236\u4F5C\\Escape_2DGame\\assets\\scripts\\common\\scenefader.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C36C15B3-BB9D-4200-165A-7348428B438B}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\common\\scenefader.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{31357FEF-8C6B-4DB7-FFD3-519CF13B5EAD}|AstarPathfindingProjectEditor.csproj|C:\\Users\\yuta0\\OneDrive\\\u30C7\u30B9\u30AF\u30C8\u30C3\u30D7\\Unity\u5236\u4F5C\\Escape_2DGame\\assets\\astarpathfindingproject\\editor\\astarupdatechecker.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{31357FEF-8C6B-4DB7-FFD3-519CF13B5EAD}|AstarPathfindingProjectEditor.csproj|solutionrelative:assets\\astarpathfindingproject\\editor\\astarupdatechecker.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C36C15B3-BB9D-4200-165A-7348428B438B}|Assembly-CSharp.csproj|C:\\Users\\yuta0\\OneDrive\\\u30C7\u30B9\u30AF\u30C8\u30C3\u30D7\\Unity\u5236\u4F5C\\Escape_2DGame\\assets\\scripts\\objects\\gem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C36C15B3-BB9D-4200-165A-7348428B438B}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\objects\\gem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C36C15B3-BB9D-4200-165A-7348428B438B}|Assembly-CSharp.csproj|C:\\Users\\yuta0\\OneDrive\\\u30C7\u30B9\u30AF\u30C8\u30C3\u30D7\\Unity\u5236\u4F5C\\Escape_2DGame\\assets\\scripts\\player\\playercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C36C15B3-BB9D-4200-165A-7348428B438B}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\player\\playercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C36C15B3-BB9D-4200-165A-7348428B438B}|Assembly-CSharp.csproj|C:\\Users\\yuta0\\OneDrive\\\u30C7\u30B9\u30AF\u30C8\u30C3\u30D7\\Unity\u5236\u4F5C\\Escape_2DGame\\assets\\scripts\\enemy\\enemyai.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C36C15B3-BB9D-4200-165A-7348428B438B}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\enemy\\enemyai.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C36C15B3-BB9D-4200-165A-7348428B438B}|Assembly-CSharp.csproj|C:\\Users\\yuta0\\OneDrive\\\u30C7\u30B9\u30AF\u30C8\u30C3\u30D7\\Unity\u5236\u4F5C\\Escape_2DGame\\assets\\scripts\\common\\result.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C36C15B3-BB9D-4200-165A-7348428B438B}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\common\\result.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 4,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "TitleMenuController.cs",
+              "DocumentMoniker": "C:\\Users\\yuta0\\OneDrive\\\u30C7\u30B9\u30AF\u30C8\u30C3\u30D7\\Unity\u5236\u4F5C\\Escape_2DGame\\Assets\\Scripts\\UI\\TitleMenuController.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\UI\\TitleMenuController.cs",
+              "ToolTip": "C:\\Users\\yuta0\\OneDrive\\\u30C7\u30B9\u30AF\u30C8\u30C3\u30D7\\Unity\u5236\u4F5C\\Escape_2DGame\\Assets\\Scripts\\UI\\TitleMenuController.cs",
+              "RelativeToolTip": "Assets\\Scripts\\UI\\TitleMenuController.cs",
+              "ViewState": "AgIAAAoAAAAAAAAAAAAuwDMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-12T14:20:15.331Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "InputManager.cs",
+              "DocumentMoniker": "C:\\Users\\yuta0\\OneDrive\\\u30C7\u30B9\u30AF\u30C8\u30C3\u30D7\\Unity\u5236\u4F5C\\Escape_2DGame\\Assets\\Scripts\\Common\\InputManager.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Common\\InputManager.cs",
+              "ToolTip": "C:\\Users\\yuta0\\OneDrive\\\u30C7\u30B9\u30AF\u30C8\u30C3\u30D7\\Unity\u5236\u4F5C\\Escape_2DGame\\Assets\\Scripts\\Common\\InputManager.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Common\\InputManager.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAgAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-12T14:17:33.034Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "AstarUpdateChecker.cs",
+              "DocumentMoniker": "C:\\Users\\yuta0\\OneDrive\\\u30C7\u30B9\u30AF\u30C8\u30C3\u30D7\\Unity\u5236\u4F5C\\Escape_2DGame\\Assets\\AstarPathfindingProject\\Editor\\AstarUpdateChecker.cs",
+              "RelativeDocumentMoniker": "Assets\\AstarPathfindingProject\\Editor\\AstarUpdateChecker.cs",
+              "ToolTip": "C:\\Users\\yuta0\\OneDrive\\\u30C7\u30B9\u30AF\u30C8\u30C3\u30D7\\Unity\u5236\u4F5C\\Escape_2DGame\\Assets\\AstarPathfindingProject\\Editor\\AstarUpdateChecker.cs",
+              "RelativeToolTip": "Assets\\AstarPathfindingProject\\Editor\\AstarUpdateChecker.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAASAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-11T13:06:23.434Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "AstarPath.cs",
+              "DocumentMoniker": "C:\\Users\\yuta0\\OneDrive\\\u30C7\u30B9\u30AF\u30C8\u30C3\u30D7\\Unity\u5236\u4F5C\\Escape_2DGame\\Assets\\AstarPathfindingProject\\Core\\AstarPath.cs",
+              "RelativeDocumentMoniker": "Assets\\AstarPathfindingProject\\Core\\AstarPath.cs",
+              "ToolTip": "C:\\Users\\yuta0\\OneDrive\\\u30C7\u30B9\u30AF\u30C8\u30C3\u30D7\\Unity\u5236\u4F5C\\Escape_2DGame\\Assets\\AstarPathfindingProject\\Core\\AstarPath.cs",
+              "RelativeToolTip": "Assets\\AstarPathfindingProject\\Core\\AstarPath.cs",
+              "ViewState": "AgIAANEGAAAAAAAAAAAmwPcGAABdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-11T13:03:58.099Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "PlayerHealthController.cs",
+              "DocumentMoniker": "C:\\Users\\yuta0\\OneDrive\\\u30C7\u30B9\u30AF\u30C8\u30C3\u30D7\\Unity\u5236\u4F5C\\Escape_2DGame\\Assets\\Scripts\\Player\\PlayerHealthController.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Player\\PlayerHealthController.cs",
+              "ToolTip": "C:\\Users\\yuta0\\OneDrive\\\u30C7\u30B9\u30AF\u30C8\u30C3\u30D7\\Unity\u5236\u4F5C\\Escape_2DGame\\Assets\\Scripts\\Player\\PlayerHealthController.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Player\\PlayerHealthController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-11T07:49:28.662Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "SceneFader.cs",
+              "DocumentMoniker": "C:\\Users\\yuta0\\OneDrive\\\u30C7\u30B9\u30AF\u30C8\u30C3\u30D7\\Unity\u5236\u4F5C\\Escape_2DGame\\Assets\\Scripts\\Common\\SceneFader.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Common\\SceneFader.cs",
+              "ToolTip": "C:\\Users\\yuta0\\OneDrive\\\u30C7\u30B9\u30AF\u30C8\u30C3\u30D7\\Unity\u5236\u4F5C\\Escape_2DGame\\Assets\\Scripts\\Common\\SceneFader.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Common\\SceneFader.cs",
+              "ViewState": "AgIAAA4AAAAAAAAAAAAiwDIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-11T07:44:16.326Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "Result.cs",
+              "DocumentMoniker": "C:\\Users\\yuta0\\OneDrive\\\u30C7\u30B9\u30AF\u30C8\u30C3\u30D7\\Unity\u5236\u4F5C\\Escape_2DGame\\Assets\\Scripts\\Common\\Result.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Common\\Result.cs",
+              "ToolTip": "C:\\Users\\yuta0\\OneDrive\\\u30C7\u30B9\u30AF\u30C8\u30C3\u30D7\\Unity\u5236\u4F5C\\Escape_2DGame\\Assets\\Scripts\\Common\\Result.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Common\\Result.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAqAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-01T08:50:23.241Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "PlayerController.cs",
+              "DocumentMoniker": "C:\\Users\\yuta0\\OneDrive\\\u30C7\u30B9\u30AF\u30C8\u30C3\u30D7\\Unity\u5236\u4F5C\\Escape_2DGame\\Assets\\Scripts\\Player\\PlayerController.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Player\\PlayerController.cs",
+              "ToolTip": "C:\\Users\\yuta0\\OneDrive\\\u30C7\u30B9\u30AF\u30C8\u30C3\u30D7\\Unity\u5236\u4F5C\\Escape_2DGame\\Assets\\Scripts\\Player\\PlayerController.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Player\\PlayerController.cs",
+              "ViewState": "AgIAADMAAAAAAAAAAAAAADMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-27T17:24:08.393Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Gem.cs",
+              "DocumentMoniker": "C:\\Users\\yuta0\\OneDrive\\\u30C7\u30B9\u30AF\u30C8\u30C3\u30D7\\Unity\u5236\u4F5C\\Escape_2DGame\\Assets\\Scripts\\Objects\\Gem.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Objects\\Gem.cs",
+              "ToolTip": "C:\\Users\\yuta0\\OneDrive\\\u30C7\u30B9\u30AF\u30C8\u30C3\u30D7\\Unity\u5236\u4F5C\\Escape_2DGame\\Assets\\Scripts\\Objects\\Gem.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Objects\\Gem.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAZAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-27T17:18:27.029Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "GameManager.cs",
+              "DocumentMoniker": "C:\\Users\\yuta0\\OneDrive\\\u30C7\u30B9\u30AF\u30C8\u30C3\u30D7\\Unity\u5236\u4F5C\\Escape_2DGame\\Assets\\Scripts\\Common\\GameManager.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Common\\GameManager.cs",
+              "ToolTip": "C:\\Users\\yuta0\\OneDrive\\\u30C7\u30B9\u30AF\u30C8\u30C3\u30D7\\Unity\u5236\u4F5C\\Escape_2DGame\\Assets\\Scripts\\Common\\GameManager.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Common\\GameManager.cs",
+              "ViewState": "AgIAACgAAAAAAAAAAAAIwE0AAAAwAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-27T16:00:13.714Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "EnemyAI.cs",
+              "DocumentMoniker": "C:\\Users\\yuta0\\OneDrive\\\u30C7\u30B9\u30AF\u30C8\u30C3\u30D7\\Unity\u5236\u4F5C\\Escape_2DGame\\Assets\\Scripts\\Enemy\\EnemyAI.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Enemy\\EnemyAI.cs",
+              "ToolTip": "C:\\Users\\yuta0\\OneDrive\\\u30C7\u30B9\u30AF\u30C8\u30C3\u30D7\\Unity\u5236\u4F5C\\Escape_2DGame\\Assets\\Scripts\\Enemy\\EnemyAI.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Enemy\\EnemyAI.cs",
+              "ViewState": "AgIAAJUAAAAAAAAAAAAgwMMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-27T15:58:02.438Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
