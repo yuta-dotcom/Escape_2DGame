@@ -49,5 +49,8 @@ TagManager:
   - name: ObjectLayer
     uniqueID: 3189260123
     locked: 0
+  - name: CharactersLayer
+    uniqueID: 3244943689
+    locked: 0
   m_RenderingLayers:
   - Default

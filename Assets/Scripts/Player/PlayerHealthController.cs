@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class PlayerHealthController : MonoBehaviour
@@ -10,10 +11,16 @@ public class PlayerHealthController : MonoBehaviour
     private float invincibleTimer = 0f;
     private bool isInvincible = false;
 
+    [SerializeField] private Transform playerRespawnPoint;
+    [SerializeField] private EnemyAI[] enemies;
+    private Transform playerTransform;
+
     void Start()
     {
+        playerTransform = transform.parent;
+        Debug.Log(playerTransform.position);
         playerHp = maxHp;
-        foreach(GameObject lifePoint in lifeArray)
+        foreach (GameObject lifePoint in lifeArray)
         {
             lifePoint.SetActive(true);
         }
@@ -31,11 +38,14 @@ public class PlayerHealthController : MonoBehaviour
         }
     }
 
-    void OnCollisionEnter2D(Collision2D collision)
+    void OnTriggerEnter2D(Collider2D collision)
     {
+        //複数回当たり続かないようにする
         if (isInvincible) return;
         if (collision.gameObject.CompareTag("Enemy"))
         {
+            //プレイヤーを初期位置に戻す
+            playerTransform.position = playerRespawnPoint.position;
             lifeArray[playerHp - 1].SetActive(false);
             playerHp--;
             if (playerHp == 0)
@@ -45,6 +55,13 @@ public class PlayerHealthController : MonoBehaviour
             }
             isInvincible = true;
             invincibleTimer = invincibleDuration;
+
+            //敵を初期位置に戻す
+            foreach (var enemy in enemies)
+            {
+                enemy.ResetToSpawn();
+            }
         }
+
     }
 }

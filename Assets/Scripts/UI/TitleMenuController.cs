@@ -6,11 +6,20 @@ using UnityEngine.SceneManagement;
 public class TitleMenuController : MonoBehaviour
 {
     [SerializeField] private GameObject firstSelectedButton;
-    
+    private bool isReady = false;
 
     private void Start()
     {
         EventSystem.current.SetSelectedGameObject(firstSelectedButton);
+
+        if (SceneFader.instance != null && SceneFader.instance.IsFading)
+        {
+            SceneFader.instance.NotifyOnFadeInComplete(() => isReady = true);
+        }
+        else
+        {
+            isReady = true;
+        }
     }
 
     private void OnEnable()
@@ -20,7 +29,6 @@ public class TitleMenuController : MonoBehaviour
         input.UI.Enable();
         input.UI.Submit.started += OnSubmit;
         input.UI.Cancel.started += OnCancel;
-
     }
 
     private void OnDisable()
@@ -33,7 +41,8 @@ public class TitleMenuController : MonoBehaviour
 
     private void OnSubmit(InputAction.CallbackContext context)
     {
-        if(EventSystem.current.currentSelectedGameObject == firstSelectedButton)
+        if (!isReady) return;
+        if (EventSystem.current.currentSelectedGameObject == firstSelectedButton)
         {
             OnStartButton();
         }
@@ -43,8 +52,10 @@ public class TitleMenuController : MonoBehaviour
     {
 
     }
+
     public void OnStartButton()
     {
+        isReady = false;
         SceneFader.instance.LoadScene("Stage");
     }
 
