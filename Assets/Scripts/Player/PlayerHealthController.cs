@@ -1,11 +1,12 @@
 using System;
+using Microsoft.Unity.VisualStudio.Editor;
 using UnityEngine;
 
 public class PlayerHealthController : MonoBehaviour
 {
     public static int playerHp;
     private const int maxHp = 3;
-    public GameObject[] lifeArray = new GameObject[maxHp];
+    [SerializeField] private GameObject[] lifeArray = new GameObject[maxHp];
 
     [SerializeField] private float invincibleDuration = 1.5f;
     private float invincibleTimer = 0f;
@@ -13,20 +14,12 @@ public class PlayerHealthController : MonoBehaviour
 
     [SerializeField] private Transform playerRespawnPoint;
     [SerializeField] private EnemyAI[] enemies;
-    private Transform playerTransform;
 
-    void Start()
+    private void Start()
     {
-        playerTransform = transform.parent;
-        Debug.Log(playerTransform.position);
-        playerHp = maxHp;
-        foreach (GameObject lifePoint in lifeArray)
-        {
-            lifePoint.SetActive(true);
-        }
+        InitPlayerStatus();
     }
-
-    void Update()
+    private void Update()
     {
         if (isInvincible)
         {
@@ -38,6 +31,15 @@ public class PlayerHealthController : MonoBehaviour
         }
     }
 
+    private void InitPlayerStatus()
+    {
+        playerHp = maxHp;
+        foreach (GameObject lifePoint in lifeArray)
+        {
+            lifePoint.SetActive(true);
+        }
+    }
+
     void OnTriggerEnter2D(Collider2D collision)
     {
         //複数回当たり続かないようにする
@@ -45,7 +47,7 @@ public class PlayerHealthController : MonoBehaviour
         if (collision.gameObject.CompareTag("Enemy"))
         {
             //プレイヤーを初期位置に戻す
-            playerTransform.position = playerRespawnPoint.position;
+            transform.position = playerRespawnPoint.position;
             lifeArray[playerHp - 1].SetActive(false);
             playerHp--;
             if (playerHp == 0)

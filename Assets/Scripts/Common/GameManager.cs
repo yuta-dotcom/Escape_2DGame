@@ -16,7 +16,7 @@ public class GameManager : MonoBehaviour
     public static bool isCleared;
 
     public static GameManager instance;
-    void Awake()
+    private void Awake()
     {
         if (instance == null)
         {
@@ -27,7 +27,7 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
         }
     }
-    void Start()
+    private void Start()
     {
         InitElements();
         SetTimer();
@@ -74,13 +74,11 @@ public class GameManager : MonoBehaviour
         UpDateCollectibleText();
         if (currentCollectibleCount == requiredCollectibleCount)
         {
-            isGameOver = true;
             isCleared = true;
-            SceneFader.instance.LoadScene("Result");
         }
     }
 
-    public void UpDateCollectibleText()
+    private void UpDateCollectibleText()
     {
         collectibleCountText.text = $"{currentCollectibleCount}/{requiredCollectibleCount}";
     }

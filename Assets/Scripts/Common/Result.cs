@@ -3,7 +3,7 @@ using UnityEngine;
 public class Result : MonoBehaviour
 {
     [SerializeField] private GameObject clearPanel, gameOverPanel;
-    void Start()
+    private void Start()
     {
         if(GameManager.isCleared)
         {

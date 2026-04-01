@@ -1,7 +1,6 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
-using UnityEngine.SceneManagement;
 
 public class TitleMenuController : MonoBehaviour
 {
@@ -14,29 +13,29 @@ public class TitleMenuController : MonoBehaviour
 
         if (SceneFader.instance != null && SceneFader.instance.IsFading)
         {
-            SceneFader.instance.NotifyOnFadeInComplete(() => isReady = true);
+            Debug.Log("フェード中 → コールバック登録");
+            SceneFader.instance.NotifyOnFadeInComplete(() =>
+            {
+                Debug.Log("コールバック呼ばれた → isReady = true");
+                isReady = true;
+            });
         }
         else
         {
+            bool isFading = SceneFader.instance != null && SceneFader.instance.IsFading;
+            Debug.Log($"フェードなし → isReady = true (IsFading={isFading})");
             isReady = true;
         }
     }
 
     private void OnEnable()
     {
-        var input = InputManager.instance.inputActions;
-        input.Player.Disable();
-        input.UI.Enable();
-        input.UI.Submit.started += OnSubmit;
-        input.UI.Cancel.started += OnCancel;
+        InputManager.instance.EnableUIMode(OnSubmit, OnCancel);
     }
 
     private void OnDisable()
     {
-        var input = InputManager.instance.inputActions;
-        input.UI.Submit.started -= OnSubmit;
-        input.UI.Cancel.started -= OnCancel;
-        input.UI.Disable();
+        InputManager.instance.EnablePlayerMode();
     }
 
     private void OnSubmit(InputAction.CallbackContext context)

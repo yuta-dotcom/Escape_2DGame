@@ -45,7 +45,9 @@ public class EnemyAI : MonoBehaviour
 
     [SerializeField] private Transform respawnPoint;
 
-    void Start()
+    private bool isWalking;
+
+    private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
@@ -54,7 +56,18 @@ public class EnemyAI : MonoBehaviour
         if (playerObj != null) player = playerObj.transform;
     }
 
-    void FixedUpdate()
+    private void Update()
+    {
+        // velocityの大きさで歩行アニメーションを切り替え
+        isWalking = rb.linearVelocity.sqrMagnitude > 0.01f;
+        anim.SetBool("isWalking", isWalking);
+
+        // 向きをアニメーションに反映
+        anim.SetFloat("X", smoothFacingDir.x);
+        anim.SetFloat("Y", smoothFacingDir.y);
+    }
+
+    private void FixedUpdate()
     {
         canSeePlayer = CanSeePlayer();
         repathTimer += Time.fixedDeltaTime;
@@ -208,29 +221,35 @@ public class EnemyAI : MonoBehaviour
         if (dist > viewRadius) return false;
 
         // 近距離は全方向検知
-        if (dist <= closeRadius) return true;
+        // if (dist <= closeRadius) return true;
 
         Vector2 dir = (player.position - transform.position).normalized;
 
         // 視野角チェック（smoothFacingDirでギズモと判定を一致させる）
         float angle = Vector2.Angle(smoothFacingDir, dir);
         if (angle > viewAngle) return false;
-
-        // 中央・左右にずらした3本のRaycastで壁角の引っかかりを緩和
-        float spreadAngle = 5f * Mathf.Deg2Rad;
-        Vector2[] dirs = {
+        // wallLayerだけでなく、壁とプレイヤー両方を含むレイヤーでRaycastする
+        // 最初に当たったものがプレイヤーなら見える、壁なら見えない
+        RaycastHit2D hit = Physics2D.Raycast(
+            transform.position,
             dir,
-            new(dir.x * Mathf.Cos(spreadAngle)  - dir.y * Mathf.Sin(spreadAngle),
-                dir.x * Mathf.Sin(spreadAngle)  + dir.y * Mathf.Cos(spreadAngle)),
-            new(dir.x * Mathf.Cos(-spreadAngle) - dir.y * Mathf.Sin(-spreadAngle),
-                dir.x * Mathf.Sin(-spreadAngle) + dir.y * Mathf.Cos(-spreadAngle))
-        };
-        foreach (Vector2 d in dirs)
+            dist,  // プレイヤーまでの距離だけ飛ばす
+            wallLayer
+        );
+        // デバッグ: 何に当たったか確認
+        if (hit.collider != null)
         {
-            RaycastHit2D hit = Physics2D.Raycast(transform.position, d, viewRadius, wallLayer);
-            if (hit.collider == null) return true;
+            Debug.Log($"Rayが当たった: {hit.collider.gameObject.name}, Layer: {LayerMask.LayerToName(hit.collider.gameObject.layer)}");
         }
-        return false;
+        else
+        {
+            Debug.Log("Rayが何にも当たっていない（壁をすり抜けている）");
+        }
+
+        Debug.DrawRay(transform.position, dir * dist, hit.collider != null ? Color.red : Color.green);
+
+        // 壁に当たらなかった = 間に壁がない = プレイヤーが見える
+        return hit.collider == null;
     }
 
     void OnTriggerEnter2D(Collider2D collision)

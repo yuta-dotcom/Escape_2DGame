@@ -5,12 +5,12 @@ using UnityEngine.SceneManagement;
 
 public class PausedMenuController : MonoBehaviour
 {
-    //ƒ{ƒ^ƒ“ƒIƒuƒWƒFƒNƒg
+    //ï¿½{ï¿½^ï¿½ï¿½ï¿½Iï¿½uï¿½Wï¿½Fï¿½Nï¿½g
     [SerializeField] private GameObject resumeButton;
     [SerializeField] private GameObject retryButton;
     [SerializeField] private GameObject titleBackButton;
 
-    //‰æ–Êƒpƒlƒ‹
+    //ï¿½ï¿½Êƒpï¿½lï¿½ï¿½
     [SerializeField] private GameObject pausePanel;
     public static bool isPaused { get; private set; }
 
@@ -23,18 +23,13 @@ public class PausedMenuController : MonoBehaviour
 
         isPaused = true;
 
-        //UIƒCƒxƒ“ƒgw“Ç
-        var input = InputManager.instance.inputActions;
-        input.Player.Disable();
-        input.UI.Enable();
-        input.UI.Submit.started += OnSubmit;
-        input.UI.Cancel.started += OnCancel;
+        InputManager.instance.EnableUIMode(OnSubmit, OnCancel);
 
-        //Å‰‚É‘I‘ğó‘Ô‚É‚È‚éƒ{ƒ^ƒ“
+        //ï¿½Åï¿½ï¿½É‘Iï¿½ï¿½ï¿½ï¿½Ô‚É‚È‚ï¿½{ï¿½^ï¿½ï¿½
         EventSystem.current.SetSelectedGameObject(retryButton);
         pausePanel.SetActive(true);
 
-        //ƒQ[ƒ€‚ğ~‚ß‚é
+        //ï¿½Qï¿½[ï¿½ï¿½ï¿½ï¿½ï¿½~ï¿½ß‚ï¿½
         Time.timeScale = 0f;
     }
     public void Resume()
@@ -46,12 +41,7 @@ public class PausedMenuController : MonoBehaviour
 
         isPaused = false;
 
-        //ƒCƒxƒ“ƒgw“Ç‰ğœ
-        var input = InputManager.instance.inputActions;
-        input.UI.Submit.started -= OnSubmit;
-        input.UI.Cancel.started -= OnCancel;
-        input.UI.Disable();
-        input.Player.Enable();
+        InputManager.instance.EnablePlayerMode();
 
         pausePanel.SetActive(false);
         Time.timeScale = 1f;
@@ -59,29 +49,22 @@ public class PausedMenuController : MonoBehaviour
 
     void Retry()
     {
-        var input = InputManager.instance.inputActions;
-        input.UI.Submit.started -= OnSubmit;
-        input.UI.Cancel.started -= OnCancel;
-        input.UI.Disable();
-        input.Player.Enable();
+        InputManager.instance.EnablePlayerMode();
 
         pausePanel.SetActive(false);
         isPaused = false;
 
         Time.timeScale = 1f;
-        SceneManager.LoadScene("Stage");
+        SceneFader.instance.LoadScene("Stage");
     }
 
     void TitleBack()
     {
-        var input = InputManager.instance.inputActions;
-        input.UI.Submit.started -= OnSubmit;
-        input.UI.Cancel.started -= OnCancel;
-        input.UI.Disable();
+        InputManager.instance.UnregisterUIHandlers();
 
         isPaused = false;
         Time.timeScale = 1f;
-        SceneManager.LoadScene("Title");
+        SceneFader.instance.LoadScene("Title");
     }
 
     private void OnSubmit(InputAction.CallbackContext context)
