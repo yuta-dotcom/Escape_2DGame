@@ -8,8 +8,8 @@ using UnityEngine.UI;
 public class PlayerController : MonoBehaviour
 {
     private Vector2 move;
-    private float walkSpeed =2.0f;
-    private float dashSpeed = 5.0f;
+    [SerializeField] private float walkSpeed = 2.0f;
+    [SerializeField] private float dashSpeed = 5.0f;
     private float currentSpeed;
     private Rigidbody2D playerBody;
     private Animator anim;
@@ -20,13 +20,16 @@ public class PlayerController : MonoBehaviour
     private FlashlightController flashlight;
     [SerializeField] private Image staminaGaugeImage;
     private float currentStamina;
-    private float maxStamina = 150;
+    [SerializeField] private float maxStamina = 100f;
+    [SerializeField] private float drainRate = 30f;  // 毎秒の消費量
+    [SerializeField] private float regenRate = 10f;   // 毎秒の回復量
 
     private void Awake()
     {
         playerBody = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         flashlight = GetComponentInChildren<FlashlightController>();
+        currentStamina = maxStamina;
     }
 
     private void OnEnable()
@@ -58,37 +61,40 @@ public class PlayerController : MonoBehaviour
     {
         if (move != Vector2.zero)
         {
-            anim.SetBool("isWalking",true);
-            dir =  move.normalized;
+            anim.SetBool("isWalking", true);
+            dir = move.normalized;
             flashlight.SetDirection(dir);
-        } else
+        }
+        else
         {
             anim.SetBool("isWalking", false);
         }
         anim.SetFloat("X", dir.x);
-        anim.SetFloat("Y",dir.y);
-
+        anim.SetFloat("Y", dir.y);
     }
     private void FixedUpdate()
     {
-        if (move.sqrMagnitude > 1f)
-        {
-            move.Normalize();
-        }
+        UpdateStamina();
         currentSpeed = isDash ? dashSpeed : walkSpeed;
-        playerBody.linearVelocity = move * currentSpeed;
+        playerBody.linearVelocity = (move.sqrMagnitude > 1f ? move.normalized : move) * currentSpeed;
     }
 
     private void UpdateStamina()
     {
-        if (currentStamina <= maxStamina) return;
-        if (isDash)
-        { 
-            currentStamina--;
-        } else
+        if (isDash && currentStamina > 0)
         {
-            currentStamina++;
+            currentStamina -= drainRate * Time.deltaTime;
         }
+        else if (isDash && currentStamina <= 0)
+        {
+            isDash = false;
+        }
+
+        if (!isDash && currentStamina < maxStamina)
+        {
+            currentStamina += regenRate * Time.deltaTime;
+        }
+        currentStamina = Mathf.Clamp(currentStamina, 0f, maxStamina);
         staminaGaugeImage.fillAmount = currentStamina / maxStamina;
     }
     private void OnMove(InputAction.CallbackContext context)
@@ -106,11 +112,10 @@ public class PlayerController : MonoBehaviour
         if (context.performed && currentStamina > 0)
         {
             isDash = true;
-            Debug.Log("ダッシュ中");
-        } else
+        }
+        else
         {
             isDash = false;
-            Debug.Log("ダッシュ終了");
         }
     }
 }

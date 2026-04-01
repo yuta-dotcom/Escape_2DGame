@@ -12697,9 +12697,9 @@ RectTransform:
   - {fileID: 1784770354}
   m_Father: {fileID: 7960276498104580190}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 50, y: -50}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &547673180
@@ -54042,6 +54042,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1995754469867020411, guid: 8b28886f46ed517418a50addbde412d5, type: 3}
+      propertyPath: staminaGaugeImage
+      value: 
+      objectReference: {fileID: 1784770355}
+    - target: {fileID: 1995754469867020411, guid: 8b28886f46ed517418a50addbde412d5, type: 3}
       propertyPath: pauseMenuController
       value: 
       objectReference: {fileID: 668691103}
@@ -54099,7 +54103,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6587920005536257393, guid: 8b28886f46ed517418a50addbde412d5, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
@@ -54232,6 +54236,10 @@ PrefabInstance:
     - target: {fileID: 3618539647826923432, guid: 09a5f9a96a38b4a42a90c5158f639dc8, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7920450984425292291, guid: 09a5f9a96a38b4a42a90c5158f639dc8, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 133
       objectReference: {fileID: 0}
     - target: {fileID: 8466362177074202131, guid: 09a5f9a96a38b4a42a90c5158f639dc8, type: 3}
       propertyPath: m_Name
