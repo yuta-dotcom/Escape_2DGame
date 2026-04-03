@@ -252,14 +252,6 @@ public class EnemyAI : MonoBehaviour
         return hit.collider == null;
     }
 
-    void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.CompareTag("Player"))
-        {
-            ResetToSpawn();
-        }
-    }
-
     public void ResetToSpawn()
     {
         transform.position = respawnPoint.position;

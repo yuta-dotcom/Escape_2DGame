@@ -97,6 +97,22 @@ public class PlayerController : MonoBehaviour
         currentStamina = Mathf.Clamp(currentStamina, 0f, maxStamina);
         staminaGaugeImage.fillAmount = currentStamina / maxStamina;
     }
+    /// <summary>
+    /// プレイヤーの位置をリセットするメソッド（捕食シーケンス完了後に呼び出される）
+    /// </summary>
+    /// <param name="position"></param>
+    public void ResetPlayerPosition(Vector2 position)
+    {
+        transform.position = position;
+    }
+
+    public void StopPlayer()
+    {
+        move = Vector2.zero;
+        playerBody.linearVelocity = Vector2.zero;
+        anim.SetBool("isWalking", false);
+        isDash = false;
+    }
     private void OnMove(InputAction.CallbackContext context)
     {
         move = context.ReadValue<Vector2>();

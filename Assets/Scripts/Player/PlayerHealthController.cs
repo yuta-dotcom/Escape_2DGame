@@ -1,69 +1,97 @@
-using System;
-using Microsoft.Unity.VisualStudio.Editor;
+using System.Collections;
+
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerHealthController : MonoBehaviour
 {
-    public static int playerHp;
-    private const int maxHp = 3;
-    [SerializeField] private GameObject[] lifeArray = new GameObject[maxHp];
-
-    [SerializeField] private float invincibleDuration = 1.5f;
-    private float invincibleTimer = 0f;
-    private bool isInvincible = false;
-
-    [SerializeField] private Transform playerRespawnPoint;
-    [SerializeField] private EnemyAI[] enemies;
+    public int currentLife { get; private set; }
+    private const int maxLife = 3;
+    [SerializeField] private GameObject[] lifeArray = new GameObject[maxLife];
+    [SerializeField] private float fadeTime = 1.0f;  //ライフのフェード時間
+    [SerializeField] private float lifeLostWaitTime = 0.5f; //体力減少後の待ち時間
 
     private void Start()
     {
         InitPlayerStatus();
     }
-    private void Update()
-    {
-        if (isInvincible)
-        {
-            invincibleTimer -= Time.deltaTime;
-            if (invincibleTimer <= 0f)
-            {
-                isInvincible = false;
-            }
-        }
-    }
 
     private void InitPlayerStatus()
     {
-        playerHp = maxHp;
+        currentLife = maxLife;
         foreach (GameObject lifePoint in lifeArray)
         {
-            lifePoint.SetActive(true);
+            lifePoint.SetActive(false);
         }
     }
 
-    void OnTriggerEnter2D(Collider2D collision)
+    public IEnumerator TakeDamage()
     {
-        //複数回当たり続かないようにする
-        if (isInvincible) return;
-        if (collision.gameObject.CompareTag("Enemy"))
-        {
-            //プレイヤーを初期位置に戻す
-            transform.position = playerRespawnPoint.position;
-            lifeArray[playerHp - 1].SetActive(false);
-            playerHp--;
-            if (playerHp == 0)
-            {
-                GameManager.instance.PlayerDead();
-                return;
-            }
-            isInvincible = true;
-            invincibleTimer = invincibleDuration;
+        if (currentLife <= 0) yield break;
+        currentLife--;
+        yield return TakeDamegeAnimation(currentLife);
+    }
 
-            //敵を初期位置に戻す
-            foreach (var enemy in enemies)
+    IEnumerator TakeDamegeAnimation(int index)
+    {
+        Image[] lifeImages = new Image[index + 1];
+
+        for (int i = 0; i <= index; i++)
+        {
+            lifeImages[i] = lifeArray[i].GetComponent<Image>();
+            lifeImages[i].color = new Color(1f, 1f, 1f, 0f);
+            lifeArray[i].SetActive(true);
+        }
+        float elapsed = 0f;
+        while (elapsed < fadeTime)
+        {
+            elapsed += Time.deltaTime;
+            float alpha = Mathf.Lerp(0f, 1f, elapsed / fadeTime);
+            foreach (Image lifeImage in lifeImages)
             {
-                enemy.ResetToSpawn();
+                lifeImage.color = new Color(1f, 1f, 1f, alpha);
             }
+            yield return null;
+        }
+        //ダメージを受けたときの処理（点滅）
+        for (int i = 0; i < 5; i++)
+        {
+            lifeArray[currentLife].SetActive(false);
+            yield return new WaitForSeconds(0.2f);
+            lifeArray[currentLife].SetActive(true);
+            yield return new WaitForSeconds(0.2f);
+        }
+        lifeArray[currentLife].SetActive(false);
+        yield return new WaitForSeconds(lifeLostWaitTime);
+
+        elapsed = 0f;
+        while (elapsed < fadeTime)
+        {
+            elapsed += Time.deltaTime;
+            float alpha = Mathf.Lerp(1f, 0f, elapsed / fadeTime);
+            foreach (Image lifeImage in lifeImages)
+            {
+                lifeImage.color = new Color(1f, 1f, 1f, alpha);
+            }
+            yield return null;
         }
 
+        for (int i = 0; i < index; i++)
+        {
+            lifeArray[i].SetActive(false);
+        }
+    }
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Enemy"))
+        {
+            Debug.Log("呼び出された");
+            CaptureSequenceController.instance.StartCaptureSequence();
+        }
+    }
+
+    public bool isPlayerDead()
+    {
+        return currentLife <= 0;
     }
 }

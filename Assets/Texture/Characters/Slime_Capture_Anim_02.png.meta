@@ -1,7 +1,10 @@
 fileFormatVersion: 2
-guid: 61257594538a6934fa7537317e849e52
+guid: 1df5871af04057644b91b551fd5379a0
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: -2736701540377615370
+    second: Slime_Capture_Anim_02_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -34,21 +37,21 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
     wrapV: 1
-    wrapW: 0
+    wrapW: 1
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 64
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -72,7 +75,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -82,19 +85,6 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 4
     buildTarget: Standalone
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-    buildTarget: Android
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -123,67 +113,23 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: dark_toggleSwitch_0
+      name: Slime_Capture_Anim_02_0
       rect:
         serializedVersion: 2
-        x: 110
-        y: 0
-        width: 968
-        height: 505
+        x: 0
+        y: 1
+        width: 64
+        height: 51
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 5566ebbe9b96417418a9d724eba65fb6
-      internalID: 1196078091
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: dark_toggleSwitch_1
-      rect:
-        serializedVersion: 2
-        x: 1214
-        y: 69
-        width: 437
-        height: 437
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 9bf678d74e59fde4b9aa520250b050d4
-      internalID: 558845467
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: dark_toggleSwitch_2
-      rect:
-        serializedVersion: 2
-        x: 82
-        y: 513
-        width: 1007
-        height: 512
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 853c55953b9a07e4aac1b46f8c442cd6
-      internalID: -288742295
+      spriteID: 6f3278dd278450ad0800000000000000
+      internalID: -2736701540377615370
       vertices: []
       indices: 
       edges: []
@@ -192,7 +138,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 506c91d1350a58848b8951926e1d6902
+    spriteID: 5e97eb03825dee720800000000000000
     internalID: 0
     vertices: []
     indices: 
@@ -202,18 +148,9 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      dark_toggleSwitch_0: 1196078091
-      dark_toggleSwitch_1: 558845467
-      dark_toggleSwitch_2: -288742295
+      Slime_Capture_Anim_02_0: -2736701540377615370
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
   assetBundleName: 
   assetBundleVariant: 
-AssetOrigin:
-  serializedVersion: 1
-  productId: 330700
-  packageName: Dark UI package
-  packageVersion: 1.0
-  assetPath: "Assets/k\u03A9smaragd/Dark Buttons/dark_toggleSwitch.png"
-  uploadId: 782469

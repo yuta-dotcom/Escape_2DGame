@@ -9,11 +9,10 @@ public class GameManager : MonoBehaviour
     private float timerSeconds;
     private bool isGameOver = false;
     [SerializeField] private TMP_Text timerText;
-
     [SerializeField] private TMP_Text collectibleCountText;
     private int requiredCollectibleCount;
     public int currentCollectibleCount;
-    public static bool isCleared;
+    public static bool isAllCollected;
 
     public static GameManager instance;
     private void Awake()
@@ -38,7 +37,7 @@ public class GameManager : MonoBehaviour
     {
         currentCollectibleCount = 0;
         requiredCollectibleCount = 100;
-        isCleared = false;
+        isAllCollected = false;
         isGameOver = false;
     }
     private void Update()
@@ -57,8 +56,7 @@ public class GameManager : MonoBehaviour
         {
             timerSeconds = 0;
             isGameOver = true;
-            isCleared = false;
-            SceneFader.instance.LoadScene("Result");
+            isAllCollected = false;
         }
     }
     private void SetTimer()
@@ -74,7 +72,7 @@ public class GameManager : MonoBehaviour
         UpDateCollectibleText();
         if (currentCollectibleCount == requiredCollectibleCount)
         {
-            isCleared = true;
+            isAllCollected = true;
         }
     }
 
@@ -83,11 +81,11 @@ public class GameManager : MonoBehaviour
         collectibleCountText.text = $"{currentCollectibleCount}/{requiredCollectibleCount}";
     }
 
-    public void PlayerDead()
+    public void GameOver()
     {
         if (isGameOver) return;
         isGameOver = true;
-        isCleared = false;
+        isAllCollected = false;
         SceneFader.instance.LoadScene("Result");
     }
 

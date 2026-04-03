@@ -52,5 +52,8 @@ TagManager:
   - name: CharactersLayer
     uniqueID: 3244943689
     locked: 0
+  - name: CaptureSequence
+    uniqueID: 1402226985
+    locked: 0
   m_RenderingLayers:
   - Default
