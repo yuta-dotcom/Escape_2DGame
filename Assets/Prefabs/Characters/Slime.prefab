@@ -84,7 +84,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: -1050023607
-  m_SortingLayer: 3
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: 368543389579951487, guid: 343f509dbb2758348acf31b5a5e5d19a, type: 3}
@@ -167,7 +167,6 @@ MonoBehaviour:
   player: {fileID: 0}
   viewRadius: 3
   viewAngle: 40
-  closeRadius: 1
   wallLayer:
     serializedVersion: 2
     m_Bits: 512
@@ -176,13 +175,19 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   patrolSpeed: 1.6
   patrolPointDist: 0.2
   lostSightMaxTime: 2
-  chaseSpeed: 3.2
+  chaseSpeed: 3.5
   alertMaxTime: 1
   nextWaypointDist: 0.2
   respawnPoint: {fileID: 0}
+  hearDistance: 5
+  maxVolume: 1
 --- !u!61 &8695290459056344441
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -213,7 +218,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
@@ -263,19 +268,19 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: 824c8a88b13a6f04a808371e7b3da01f, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
-  m_Pitch: 1
+  m_Pitch: 0.52
   Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
   Priority: 128
   DopplerLevel: 1
-  MinDistance: 0.8
-  MaxDistance: 2
+  MinDistance: 0.5
+  MaxDistance: 100
   Pan2D: 0
-  rolloffMode: 0
+  rolloffMode: 2
   BypassEffects: 0
   BypassListenerEffects: 0
   BypassReverbZones: 0
@@ -283,23 +288,14 @@ AudioSource:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
-      time: 0
+      time: 0.48865968
       value: 1
-      inSlope: 0
-      outSlope: 0
+      inSlope: -1.2504979
+      outSlope: -1.2504979
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
+      inWeight: 0
+      outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4

@@ -29,10 +29,10 @@ public class PlayerHealthController : MonoBehaviour
     {
         if (currentLife <= 0) yield break;
         currentLife--;
-        yield return TakeDamegeAnimation(currentLife);
+        yield return TakeDamageAnimation(currentLife);
     }
 
-    IEnumerator TakeDamegeAnimation(int index)
+    IEnumerator TakeDamageAnimation(int index)
     {
         Image[] lifeImages = new Image[index + 1];
 
@@ -85,12 +85,11 @@ public class PlayerHealthController : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Enemy"))
         {
-            Debug.Log("呼び出された");
             CaptureSequenceController.instance.StartCaptureSequence();
         }
     }
 
-    public bool isPlayerDead()
+    public bool IsPlayerDead()
     {
         return currentLife <= 0;
     }

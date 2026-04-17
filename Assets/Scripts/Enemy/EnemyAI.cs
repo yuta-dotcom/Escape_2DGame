@@ -10,11 +10,11 @@ public class EnemyAI : MonoBehaviour
     private Seeker seeker;
     [SerializeField] private Transform player;
     private Animator anim;
+    private AudioSource audioSource;
 
     [Header("Vision")]
     [SerializeField] private float viewRadius = 6.0f;     // 視界半径
     [SerializeField] private float viewAngle = 90f;       // 視野角（片側°）
-    [SerializeField] private float closeRadius = 1.0f;    // この距離以内は全方向検知
     private bool canSeePlayer;
     private Vector2 smoothFacingDir = Vector2.right;
     [SerializeField] private LayerMask wallLayer;
@@ -47,8 +47,15 @@ public class EnemyAI : MonoBehaviour
 
     private bool isWalking;
 
+    [Header("Audio")]
+    [SerializeField] private float hearDistance = 10.0f;
+    [SerializeField] private float maxVolume = 1.0f;
+
     private void Start()
     {
+        audioSource = GetComponent<AudioSource>();
+        audioSource.volume = 0f;
+        audioSource.Play();
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         seeker = GetComponent<Seeker>();
@@ -58,6 +65,16 @@ public class EnemyAI : MonoBehaviour
 
     private void Update()
     {
+        float dist = Vector2.Distance(transform.position, player.position);
+        if (dist <= hearDistance)
+        {
+            float volume = Mathf.Lerp(maxVolume, 0f, dist / hearDistance);
+            audioSource.volume = volume;
+        }
+        else
+        {
+            audioSource.volume = 0f;
+        }
         // velocityの大きさで歩行アニメーションを切り替え
         isWalking = rb.linearVelocity.sqrMagnitude > 0.01f;
         anim.SetBool("isWalking", isWalking);
@@ -220,8 +237,6 @@ public class EnemyAI : MonoBehaviour
         float dist = Vector2.Distance(transform.position, player.position);
         if (dist > viewRadius) return false;
 
-        // 近距離は全方向検知
-        // if (dist <= closeRadius) return true;
 
         Vector2 dir = (player.position - transform.position).normalized;
 
@@ -236,17 +251,6 @@ public class EnemyAI : MonoBehaviour
             dist,  // プレイヤーまでの距離だけ飛ばす
             wallLayer
         );
-        // デバッグ: 何に当たったか確認
-        if (hit.collider != null)
-        {
-            Debug.Log($"Rayが当たった: {hit.collider.gameObject.name}, Layer: {LayerMask.LayerToName(hit.collider.gameObject.layer)}");
-        }
-        else
-        {
-            Debug.Log("Rayが何にも当たっていない（壁をすり抜けている）");
-        }
-
-        Debug.DrawRay(transform.position, dir * dist, hit.collider != null ? Color.red : Color.green);
 
         // 壁に当たらなかった = 間に壁がない = プレイヤーが見える
         return hit.collider == null;

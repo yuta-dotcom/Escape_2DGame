@@ -1,4 +1,5 @@
 
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
@@ -7,6 +8,7 @@ using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
+    //移動関連変数
     private Vector2 move;
     [SerializeField] private float walkSpeed = 2.0f;
     [SerializeField] private float dashSpeed = 5.0f;
@@ -18,14 +20,24 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private PausedMenuController pauseMenuController;
     //ライト関連変数
     private FlashlightController flashlight;
+    //スタミナ関連変数
     [SerializeField] private Image staminaGaugeImage;
     private float currentStamina;
     [SerializeField] private float maxStamina = 100f;
     [SerializeField] private float drainRate = 30f;  // 毎秒の消費量
     [SerializeField] private float regenRate = 10f;   // 毎秒の回復量
 
+    // 歩行音関連変数
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioClip[] footstepClips;
+    [SerializeField] private float walkStepInterval = 0.45f; // 歩行音の再生間隔
+    [SerializeField] private float dashStepInterval = 0.25f; // ダッシュ音の再生間隔
+    private float stepTimer;
+    //スタミナバー関連変数
+    [SerializeField] private StaminaBarDisplay staminaBarDisplay;
     private void Awake()
     {
+        audioSource = GetComponent<AudioSource>();
         playerBody = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         flashlight = GetComponentInChildren<FlashlightController>();
@@ -64,6 +76,15 @@ public class PlayerController : MonoBehaviour
             anim.SetBool("isWalking", true);
             dir = move.normalized;
             flashlight.SetDirection(dir);
+
+            float interval = isDash ? dashStepInterval : walkStepInterval;
+            stepTimer += Time.deltaTime;
+            if (stepTimer >= interval)
+            {
+                PlayFootstepSound();
+                stepTimer = 0f;
+            }
+            
         }
         else
         {
@@ -89,7 +110,7 @@ public class PlayerController : MonoBehaviour
         {
             isDash = false;
         }
-
+        staminaBarDisplay.SetVisble(isDash);
         if (!isDash && currentStamina < maxStamina)
         {
             currentStamina += regenRate * Time.deltaTime;
@@ -112,6 +133,14 @@ public class PlayerController : MonoBehaviour
         playerBody.linearVelocity = Vector2.zero;
         anim.SetBool("isWalking", false);
         isDash = false;
+        currentStamina = maxStamina;
+    }
+
+    private void PlayFootstepSound()
+    {
+        if (footstepClips.Length == 0) return;
+        int index = Random.Range(0, footstepClips.Length);
+        audioSource.PlayOneShot(footstepClips[index]);
     }
     private void OnMove(InputAction.CallbackContext context)
     {

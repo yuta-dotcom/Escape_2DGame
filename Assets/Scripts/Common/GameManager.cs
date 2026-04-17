@@ -1,18 +1,14 @@
-using UnityEngine;
+﻿using UnityEngine;
 using TMPro;
 using System;
-using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    [Header("Time")]
-    private float timerSeconds;
     private bool isGameOver = false;
-    [SerializeField] private TMP_Text timerText;
     [SerializeField] private TMP_Text collectibleCountText;
     private int requiredCollectibleCount;
-    public int currentCollectibleCount;
-    public static bool isAllCollected;
+    private int currentCollectibleCount;
+    public static bool IsClear { get; private set; }
 
     public static GameManager instance;
     private void Awake()
@@ -28,42 +24,18 @@ public class GameManager : MonoBehaviour
     }
     private void Start()
     {
+        SoundManager.instance.PlayBgm("GameBgm");
         InitElements();
-        SetTimer();
         UpDateCollectibleText();
     }
 
     private void InitElements()
     {
+        requiredCollectibleCount = GameObject.FindGameObjectsWithTag("Gem").Length;
         currentCollectibleCount = 0;
-        requiredCollectibleCount = 100;
-        isAllCollected = false;
+        IsClear = false;
         isGameOver = false;
     }
-    private void Update()
-    {
-        UpdateTimer();
-    }
-
-    private void UpdateTimer()
-    {
-        if (isGameOver) return;
-        timerSeconds -= Time.deltaTime;
-        var span = new TimeSpan(0, 0, (int)timerSeconds);
-        timerText.text = span.ToString(@"mm\:ss");
-
-        if (timerSeconds < 0)
-        {
-            timerSeconds = 0;
-            isGameOver = true;
-            isAllCollected = false;
-        }
-    }
-    private void SetTimer()
-    {
-        timerSeconds = 180;
-    }
-
 
     public void AddCollectible()
     {
@@ -72,7 +44,7 @@ public class GameManager : MonoBehaviour
         UpDateCollectibleText();
         if (currentCollectibleCount == requiredCollectibleCount)
         {
-            isAllCollected = true;
+            IsClear = true;
         }
     }
 
@@ -84,10 +56,9 @@ public class GameManager : MonoBehaviour
     public void GameOver()
     {
         if (isGameOver) return;
+        SoundManager.instance.StopBgm("GameBgm");
         isGameOver = true;
-        isAllCollected = false;
+        IsClear = false;
         SceneFader.instance.LoadScene("Result");
     }
-
-
 }

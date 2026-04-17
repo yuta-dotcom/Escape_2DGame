@@ -5,6 +5,7 @@ using UnityEngine.InputSystem;
 public class TitleMenuController : MonoBehaviour
 {
     [SerializeField] private GameObject firstSelectedButton;
+    [SerializeField] private GameObject previousSelectedButton;
     private bool isReady = false;
 
     private void Start()
@@ -13,21 +14,31 @@ public class TitleMenuController : MonoBehaviour
 
         if (SceneFader.instance != null && SceneFader.instance.IsFading)
         {
-            Debug.Log("フェード中 → コールバック登録");
             SceneFader.instance.NotifyOnFadeInComplete(() =>
             {
-                Debug.Log("コールバック呼ばれた → isReady = true");
                 isReady = true;
             });
         }
         else
         {
             bool isFading = SceneFader.instance != null && SceneFader.instance.IsFading;
-            Debug.Log($"フェードなし → isReady = true (IsFading={isFading})");
             isReady = true;
         }
     }
+    private void Update()
+    {
+        //カーソル音を再生するための処理
+        GameObject currentSelected = EventSystem.current.currentSelectedGameObject;
 
+        if (currentSelected != null && currentSelected != previousSelectedButton)
+        {
+            if (previousSelectedButton != null)
+            {
+                SoundManager.instance.PlaySfx("Cursor");
+            }
+            previousSelectedButton = currentSelected;
+        }
+    }
     private void OnEnable()
     {
         InputManager.instance.EnableUIMode(OnSubmit, OnCancel);
@@ -43,6 +54,7 @@ public class TitleMenuController : MonoBehaviour
         if (!isReady) return;
         if (EventSystem.current.currentSelectedGameObject == firstSelectedButton)
         {
+            SoundManager.instance.PlaySfx("Submit");
             OnStartButton();
         }
     }

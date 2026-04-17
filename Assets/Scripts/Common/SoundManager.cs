@@ -1,5 +1,4 @@
 using System;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class SoundManager : MonoBehaviour
@@ -26,7 +25,7 @@ public class SoundManager : MonoBehaviour
 
     private void Start()
     {
-        
+        PlayBgm("TitleBgm");
     }
 
     public void  PlayBgm(string name)
@@ -43,6 +42,11 @@ public class SoundManager : MonoBehaviour
         }
     }
 
+    public void StopBgm(string name)
+    {
+        bgmAudioSource.Stop();
+    }
+
     public void PlaySfx(string name)
     {
         Sound s = Array.Find(sfxSoundDates, x => x.name == name);
@@ -52,7 +56,6 @@ public class SoundManager : MonoBehaviour
             Debug.LogError("音楽ファイルが見つかりませんでした。");
         } else
         {
-            sfxAudioSource.clip = s.clip;
             sfxAudioSource.PlayOneShot(s.clip);
         }
     }

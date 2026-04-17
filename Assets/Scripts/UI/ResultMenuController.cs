@@ -35,9 +35,11 @@ public class ResultMenuController : MonoBehaviour
         if (!isReady) return;
         if (EventSystem.current.currentSelectedGameObject == firstSelectedButton)
         {
+            SoundManager.instance.PlaySfx("Submit");
             OnRetryButton();
         } else if (EventSystem.current.currentSelectedGameObject == titleBackButton)
         {
+            SoundManager.instance.PlaySfx("Submit");
             TitleBack();
         }
     }

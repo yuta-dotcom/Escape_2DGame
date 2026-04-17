@@ -5,7 +5,7 @@ public class Result : MonoBehaviour
     [SerializeField] private GameObject clearPanel, gameOverPanel;
     private void Start()
     {
-        if(GameManager.isAllCollected)
+        if(GameManager.IsClear)
         {
             clearPanel.SetActive(true);
             gameOverPanel.SetActive(false);

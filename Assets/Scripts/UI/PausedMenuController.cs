@@ -1,19 +1,33 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
-using UnityEngine.SceneManagement;
 
 public class PausedMenuController : MonoBehaviour
 {
-    //�{�^���I�u�W�F�N�g
+    //ボタンオブジェクト
     [SerializeField] private GameObject resumeButton;
     [SerializeField] private GameObject retryButton;
     [SerializeField] private GameObject titleBackButton;
+    [SerializeField] private GameObject previousSelectedButton;
 
-    //��ʃp�l��
+    //画面パネル
     [SerializeField] private GameObject pausePanel;
     public static bool isPaused { get; private set; }
 
+  private void Update()
+    {
+        //カーソル音を再生するための処理
+        GameObject currentSelected = EventSystem.current.currentSelectedGameObject;
+
+        if (currentSelected != null && currentSelected != previousSelectedButton)
+        {
+            if (previousSelectedButton != null)
+            {
+                SoundManager.instance.PlaySfx("Cursor");
+            }
+            previousSelectedButton = currentSelected;
+        }
+    }
     public void Pause()
     {
         if (isPaused)
@@ -25,11 +39,11 @@ public class PausedMenuController : MonoBehaviour
 
         InputManager.instance.EnableUIMode(OnSubmit, OnCancel);
 
-        //�ŏ��ɑI����ԂɂȂ�{�^��
+        //最初に選択状態になるボタン
         EventSystem.current.SetSelectedGameObject(retryButton);
         pausePanel.SetActive(true);
 
-        //�Q�[�����~�߂�
+        //ゲームを止める
         Time.timeScale = 0f;
     }
     public void Resume()
@@ -71,12 +85,15 @@ public class PausedMenuController : MonoBehaviour
     {
         if (EventSystem.current.currentSelectedGameObject == resumeButton)
         {
+            SoundManager.instance.PlaySfx("Submit");            
             Resume();
         } else if(EventSystem.current.currentSelectedGameObject == retryButton)
         {
+            SoundManager.instance.PlaySfx("Submit");
             Retry();
         } else if(EventSystem.current.currentSelectedGameObject == titleBackButton)
         {
+            SoundManager.instance.PlaySfx("Submit");
             TitleBack();
         }
     }

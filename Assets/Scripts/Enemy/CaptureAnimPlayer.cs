@@ -13,7 +13,7 @@ public class CaptureAnimPlayer : MonoBehaviour
     [SerializeField] private GameObject CaptureSequenceBackGround; //捕食シーケンスの背景Image
 
     [Header("Camera Shake")]
-    [SerializeField] private float shakeIntensity = 0.4f; //カメラの揺れの強さ
+    [SerializeField] private float shakeIntensity = 1.0f; //カメラの揺れの強さ
 
     [Header("Camera Zoom")]
     [SerializeField] private float zoomInSize = 1f; //ズームの後のサイズ
@@ -43,6 +43,7 @@ public class CaptureAnimPlayer : MonoBehaviour
         originalCameraSize = mainCamera.orthographicSize;
         originalCameraPosition = mainCamera.transform.position;
 
+        SoundManager.instance.PlaySfx("Capture"); //捕食の効果音を再生
         CaptureSequenceBackGround.SetActive(true); //捕食シーケンスの背景を表示
         gameObject.SetActive(true); //捕食アニメーションを表示
 

@@ -79,9 +79,8 @@ public class CaptureSequenceController : MonoBehaviour
         yield return StartCoroutine(playerHealthController.TakeDamage());
 
         //体力が0ならゲームオーバー
-        if (playerHealthController.isPlayerDead())
+        if (playerHealthController.IsPlayerDead())
         {
-            GameManager.isAllCollected = false;
             GameManager.instance.GameOver();
             yield break;
         }
